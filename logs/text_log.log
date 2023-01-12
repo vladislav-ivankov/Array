@@ -1,0 +1,26 @@
+16:53:06.071 [ArrayFileReaderServiceImpl] INFO  ArrayFileReaderServiceImpl - data//array.txt not exist
+16:53:06.081 [ArrayFileReaderServiceImpl] ERROR ArrayFileReaderServiceImpl - java.io.FileNotFoundException: data\arrayFile.txt (Системе не удается найти указанный путь)
+16:53:06.083 [ArrayFileReaderServiceImpl] INFO  ArrayFileReaderServiceImpl - data//arr.txt not exist
+16:53:06.084 [ArrayFileReaderServiceImpl] ERROR ArrayFileReaderServiceImpl - java.io.FileNotFoundException: data\arrayFile.txt (Системе не удается найти указанный путь)
+21:21:25.457 [ArrayFileReader] INFO  ArrayFileReader - data//array.txt not exist
+21:21:25.484 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "[0,"
+21:21:25.486 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "5,"
+21:21:25.486 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "12,"
+21:21:25.487 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "18,"
+21:21:25.489 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "3]"
+21:21:25.491 [ArrayFileReader] INFO  ArrayFileReader - data//arr.txt not exist
+21:21:25.493 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "[0,"
+21:21:25.493 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "5,"
+21:21:25.494 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "12,"
+21:21:25.495 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "18,"
+21:21:25.495 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: "3]"
+23:05:04.045 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: ""
+23:05:04.054 [ArrayFileReader] INFO  ArrayFileReader - file data//arr.txt not exist
+23:05:04.056 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: ""
+11:48:57.596 [ArrayFileReader] ERROR ArrayFileReader - java.lang.NumberFormatException: For input string: ""
+13:52:59.971 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type
+13:56:50.137 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type
+14:00:12.728 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type
+14:01:21.731 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type
+14:03:15.530 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type
+14:07:51.266 [ArrayFileReader] ERROR ArrayFileReader - Invalid data type

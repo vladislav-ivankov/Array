@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 public class ArrayServiceImplTest {
     ArrayServiceImpl service = new ArrayServiceImpl();
     int[] array = {-1, 12, 6, 14, -7};
-    CustomArray arr = new CustomArray(array);
+    CustomArray arr = new CustomArray();
 
     @Test
     public void testAverageValue() {
