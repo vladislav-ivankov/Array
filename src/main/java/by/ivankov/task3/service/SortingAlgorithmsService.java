@@ -1,11 +1,14 @@
 package by.ivankov.task3.service;
 
 import by.ivankov.task3.entity.CustomArray;
+import by.ivankov.task3.exception.CustomException;
+
+import java.util.Optional;
 
 public interface SortingAlgorithmsService {
-    int[] bubbleSort(CustomArray arr);
+    Optional<int[]> bubbleSort(CustomArray arr) throws CustomArray, CustomException;
 
-    int[] selectionSort(CustomArray arr);
+    Optional<int[]> selectionSort(CustomArray arr) throws CustomException;
 
-    int[] insertionSort(CustomArray arr);
+    Optional<int[]> insertionSort(CustomArray arr) throws CustomException;
 }

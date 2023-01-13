@@ -9,7 +9,7 @@ public interface StreamArrayService {
     OptionalInt streamMinValue(CustomArray array);
     OptionalInt streamMaxValue(CustomArray array);
     OptionalDouble streamAverageValue(CustomArray array);
-    int streamSum(CustomArray array);
-    int streamSearchPositive(CustomArray array);
-    int streamSearchNegative(CustomArray array);
+    OptionalInt streamSum(CustomArray array);
+    OptionalInt streamSearchPositive(CustomArray array);
+    OptionalInt streamSearchNegative(CustomArray array);
 }

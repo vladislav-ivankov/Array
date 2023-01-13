@@ -8,7 +8,6 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
 public class StreamArrayServiceImpl implements StreamArrayService {
-    int[] arr = {-1, 12, 6, 14, -7};
     @Override
     public OptionalInt streamMinValue(CustomArray array) {
         return Arrays.stream(array.getArray()).min();
@@ -25,17 +24,17 @@ public class StreamArrayServiceImpl implements StreamArrayService {
     }
 
     @Override
-    public int streamSum(CustomArray array) {
-        return Arrays.stream(array.getArray()).sum();
+    public OptionalInt streamSum(CustomArray array) {
+        return OptionalInt.of(Arrays.stream(array.getArray()).sum());
     }
 
     @Override
-    public int streamSearchPositive(CustomArray array) {
-        return (int) Arrays.stream(array.getArray()).filter(i -> i > 0).count();
+    public OptionalInt streamSearchPositive(CustomArray array) {
+        return OptionalInt.of((int) Arrays.stream(array.getArray()).filter(i -> i > 0).count());
     }
 
     @Override
-    public int streamSearchNegative(CustomArray array) {
-        return (int) Arrays.stream(array.getArray()).filter(i -> i < 0).count();
+    public OptionalInt streamSearchNegative(CustomArray array) {
+        return OptionalInt.of((int) Arrays.stream(array.getArray()).filter(i -> i < 0).count());
     }
 }

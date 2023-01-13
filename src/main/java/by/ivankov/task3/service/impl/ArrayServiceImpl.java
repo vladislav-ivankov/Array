@@ -1,88 +1,150 @@
 package by.ivankov.task3.service.impl;
 
 import by.ivankov.task3.entity.CustomArray;
+import by.ivankov.task3.exception.CustomException;
 import by.ivankov.task3.service.ArrayService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 
 
 public class ArrayServiceImpl implements ArrayService {
+    Logger logger = LogManager.getLogger();
 
     @Override
-    public int[] replacement(CustomArray arr) {
+    public Optional<int[]> replacement(CustomArray arr) throws CustomException {
         int[] array = arr.getArray();
-        for (int i : array) {
-            if (i < 7) {
-                i = 0;
-            } else if (i >= 7) {
-                i = 1;
-            }
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
         }
-        return array;
+        if (array.length != 0) {
+            for (int i : array) {
+                if (i < 7) {
+                    i = 0;
+                } else if (i >= 7) {
+                    i = 1;
+                }
+            }
+        }else {
+            logger.log(Level.INFO, "Array length = 0");
+        }
+        return Optional.of(array);
     }
 
     @Override
-    public int maxValue(CustomArray arr) {
+    public OptionalInt maxValue(CustomArray arr) throws CustomException {
         int[] array = arr.getArray();
-        int min = 0;
-        for(int i : array){
-            if (i < min){
-                min = i;
+        OptionalInt min = OptionalInt.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        if (array.length != 0) {
+            for (int i : array) {
+                if (i > min.getAsInt()) {
+                    min = OptionalInt.of(i);
+                }
             }
+        } else {
+            logger.log(Level.INFO, "Array length = 0");
+            min = OptionalInt.empty();
         }
         return min;
     }
 
     @Override
-    public int minValue(CustomArray arr) {
+    public OptionalInt minValue(CustomArray arr) throws CustomException {
         int[] array = arr.getArray();
-        int max = 0;
-        for(int i : array){
-            if(i > max){
-                max = i;
+        OptionalInt max = OptionalInt.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        if (array.length != 0) {
+            for (int i : array) {
+                if (i < max.getAsInt()) {
+                    max = OptionalInt.of(i);
+                }
             }
+        } else {
+            logger.log(Level.INFO, "Array length = 0");
         }
         return max;
     }
 
     @Override
-    public double averageValue(CustomArray arr) {
+    public OptionalDouble averageValue(CustomArray arr) throws CustomException {
         int[] array = arr.getArray();
-        double sum = 0;
-        for(int i : array) {
-            sum += i;
+        OptionalInt sum = OptionalInt.of(0);
+        OptionalDouble result = OptionalDouble.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
         }
-        return (sum / array.length);
-    }
-
-    @Override
-    public int sum(CustomArray arr) {
-        int[] array = arr.getArray();
-        double sum = 0;
-        for (int i : array) {
-            sum += i;
-        }
-        return (int) sum;
-    }
-
-    @Override
-    public int searchPositive(CustomArray arr) {
-        int[] array = arr.getArray();
-        int pos = 0;
-        for (int i : array) {
-            if (i > 0) {
-                pos += 1;
+        if (array.length != 0) {
+            for (int i : array) {
+                sum = OptionalInt.of(sum.getAsInt() + i);
             }
+            result = OptionalDouble.of(sum.getAsInt() / array.length);
+        } else {
+            logger.log(Level.INFO, "Array length = 0");
+        }
+        return result;
+    }
+
+    @Override
+    public OptionalInt sum(CustomArray arr) throws CustomException {
+        int[] array = arr.getArray();
+        OptionalInt sum = OptionalInt.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        if (array.length != 0) {
+            for (int i : array) {
+                sum = OptionalInt.of(sum.getAsInt() + i);
+            }
+        } else {
+            logger.log(Level.INFO, "Array length = 0");
+        }
+        return sum;
+    }
+
+    @Override
+    public OptionalInt searchPositive(CustomArray arr) throws CustomException{
+        int[] array = arr.getArray();
+        OptionalInt pos = OptionalInt.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        if (array.length != 0) {
+            for (int i : array) {
+                if (i > 0) {
+                    pos = OptionalInt.of(pos.getAsInt() + 1);
+                }
+            }
+        }else {
+            logger.log(Level.INFO, "Array length = 0");
         }
         return pos;
     }
 
     @Override
-    public int searchNegative(CustomArray arr) {
+    public OptionalInt searchNegative(CustomArray arr) throws CustomException{
         int[] array = arr.getArray();
-        int neg = 0;
-        for (int i : array) {
-            if (i < 0) {
-                neg += 1;
+        OptionalInt neg = OptionalInt.of(0);
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        if (array.length != 0) {
+            for (int i : array) {
+                if (i < 0) {
+                    neg = OptionalInt.of(neg.getAsInt() + 1);
+                }
             }
+        }else{
+            logger.log(Level.INFO, "Array length = 0");
         }
         return neg;
     }

@@ -1,4 +1,4 @@
-package by.ivankov.task3.file;
+package by.ivankov.task3.reader;
 
 import by.ivankov.task3.entity.CustomArray;
 

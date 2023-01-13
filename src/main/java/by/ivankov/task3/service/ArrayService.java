@@ -1,19 +1,24 @@
 package by.ivankov.task3.service;
 
 import by.ivankov.task3.entity.CustomArray;
+import by.ivankov.task3.exception.CustomException;
+
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 
 public interface ArrayService {
-    int[] replacement(CustomArray arr);
+    Optional<int[]> replacement(CustomArray arr) throws CustomException;
 
-    int maxValue(CustomArray arr);
+    OptionalInt maxValue(CustomArray arr) throws CustomException;
 
-    int minValue(CustomArray arr);
+    OptionalInt minValue(CustomArray arr) throws CustomException;
 
-    double averageValue(CustomArray arr);
+    OptionalDouble averageValue(CustomArray arr) throws CustomException;
 
-    int sum(CustomArray arr);
+    OptionalInt sum(CustomArray arr) throws CustomException;
 
-    int searchPositive(CustomArray arr);
+    OptionalInt searchPositive(CustomArray arr) throws CustomException;
 
-    int searchNegative(CustomArray arr);
+    OptionalInt searchNegative(CustomArray arr) throws CustomException;
 }
