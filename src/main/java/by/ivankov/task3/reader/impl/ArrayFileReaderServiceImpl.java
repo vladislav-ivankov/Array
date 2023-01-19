@@ -2,6 +2,7 @@ package by.ivankov.task3.reader.impl;
 
 import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.reader.ArrayFileReaderService;
+import by.ivankov.task3.validator.impl.ArrayValidatorImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 
 public class ArrayFileReaderServiceImpl implements ArrayFileReaderService {
     static Logger logger = LogManager.getLogger();
+    ArrayValidatorImpl validator = new ArrayValidatorImpl();
     private static final String FILENAME = "data//defaultArray.txt";
     private static final String SEPARATOR = "\\s+";
 
@@ -40,12 +42,12 @@ public class ArrayFileReaderServiceImpl implements ArrayFileReaderService {
                     }
                 }
             }
-            customArray.setArray(arr);
         } catch (FileNotFoundException e) {
             logger.log(Level.ERROR, "There is no such file or directory");
         } catch (IOException e) {
             logger.log(Level.INFO, "Unknown Error(Exception)");
         }
+        customArray.setArray(arr);
         return customArray;
     }
 }

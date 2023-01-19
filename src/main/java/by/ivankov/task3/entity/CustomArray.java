@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class CustomArray extends Throwable {
+public class CustomArray{
     private int arrayId;
     private int[] array;
 
