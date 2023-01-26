@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
@@ -17,22 +16,22 @@ public class ArrayServiceImpl implements ArrayService {
     Logger logger = LogManager.getLogger();
 
     @Override
-    public Optional<int[]> replacement(CustomArray arr) throws CustomException {
+    public int[] replacement(CustomArray arr, int condition) throws CustomException {
         int[] array = arr.getArray();
         if (array == null) {
             throw new CustomException("The array cannot be empty");
         }
-        for (int i : array) {
-            if (i < 7) {
-                i = 0;
-            } else if (i >= 7) {
-                i = 1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < condition) {
+                array[i] = 0;
+            } else if (array[i] >= condition) {
+                array[i] = 1;
             }
         }
         if (array.length == 0) {
             logger.log(Level.INFO, "Array length = 0");
         }
-        return Optional.of(array);
+        return array;
     }
 
     @Override
@@ -140,5 +139,27 @@ public class ArrayServiceImpl implements ArrayService {
             logger.log(Level.INFO, "Array length = 0");
         }
         return neg;
+    }
+
+    public int[] searchPosNeg(CustomArray arr) throws CustomException {
+        int[] array = arr.getArray();
+        int[] result = {0, 0};
+        int neg = 0;
+        int pos = 0;
+        if (array == null) {
+            throw new CustomException("The array cannot be empty");
+        }
+        for (int i : array) {
+            if (i > 0) {
+                result[0] += pos + 1;
+            }
+            if (i < 0) {
+                result[1] += neg + 1;
+            }
+        }
+        if (array.length == 0) {
+            logger.log(Level.INFO, "Array length = 0");
+        }
+        return result;
     }
 }

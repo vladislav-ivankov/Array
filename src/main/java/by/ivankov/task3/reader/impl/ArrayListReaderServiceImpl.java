@@ -1,8 +1,8 @@
 package by.ivankov.task3.reader.impl;
 
 import by.ivankov.task3.entity.CustomArray;
-import by.ivankov.task3.reader.ArrayFileReaderService;
-import by.ivankov.task3.validator.impl.ArrayValidatorImpl;
+import by.ivankov.task3.exception.CustomException;
+import by.ivankov.task3.reader.ArrayListReaderService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,42 +13,43 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 
-public class ArrayFileReaderServiceImpl implements ArrayFileReaderService {
+public class ArrayListReaderServiceImpl implements ArrayListReaderService {
     static Logger logger = LogManager.getLogger();
-    ArrayValidatorImpl validator = new ArrayValidatorImpl();
     private static final String FILENAME = "data//defaultArray.txt";
     private static final String SEPARATOR = "\\s+";
 
-    public CustomArray arrayReader(String fileName) {
+    public List<CustomArray> arrayListReader(String fileName) throws CustomException {
         Path path = Path.of(fileName);
         if (!Files.exists(path)) {
             logger.log(Level.ERROR, "file" + fileName + " not exist");
             fileName = FILENAME;
         }
-        CustomArray customArray = new CustomArray();
-        int[] arr = {};
+        List<CustomArray> arrays = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String tmp;
-            if ((tmp = reader.readLine()) != null) {
-                String[] str = tmp.split(SEPARATOR);
-                arr = new int[str.length];
+            Scanner scanner = new Scanner(reader);
+            while (scanner.hasNextLine()) {
+                String[] str = scanner.nextLine().split(SEPARATOR);
+                int[] arr = new int[str.length];
                 for (int i = 0; i < str.length; i++) {
                     try {
                         arr[i] = Integer.parseInt(str[i]);
-                    } catch (NumberFormatException e) {
-                        logger.log(Level.ERROR, "Invalid data type");
+                    } catch (NullPointerException e) {
+                        throw new CustomException("Invalid data type!");
                     }
                 }
+                arrays.add(new CustomArray(arr));
             }
         } catch (FileNotFoundException e) {
-            logger.log(Level.ERROR, "There is no such file or directory");
+            throw new CustomException("There is no such file or directory");
         } catch (IOException e) {
-            logger.log(Level.INFO, "Unknown Error(Exception)");
+            throw new CustomException("Unknown Error(Exception)");
         }
-        customArray.setArray(arr);
-        return customArray;
+        return arrays;
     }
 }
 

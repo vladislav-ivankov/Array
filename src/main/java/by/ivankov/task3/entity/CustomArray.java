@@ -7,12 +7,24 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class CustomArray{
+public class CustomArray {
     private int arrayId;
     private int[] array;
 
     public CustomArray(){
         this.arrayId = IdGenerator.arrayIdGenerator();
+    }
+    public CustomArray(int[] array) {
+        this.arrayId = IdGenerator.arrayIdGenerator();
+        this.array = array;
+    }
+
+    public int getArrayId() {
+        return arrayId;
+    }
+
+    public void setArrayId(int arrayId) {
+        this.arrayId = arrayId;
     }
 
     public void setArray(int[] array) {
@@ -40,8 +52,8 @@ public class CustomArray{
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", CustomArray.class.getSimpleName() + "(", ")")
-                .add("arrayId=" + arrayId)
+        return new StringJoiner(", ", "\n" + "(", ")")
+                .add("Id=" + arrayId)
                 .add("array=" + Arrays.toString(array))
                 .toString();
     }

@@ -1,5 +1,6 @@
 package by.ivankov.task3.validator.impl;
 
+import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.validator.ArrayValidator;
 
 

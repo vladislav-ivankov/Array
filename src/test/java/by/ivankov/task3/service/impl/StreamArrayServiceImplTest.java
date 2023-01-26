@@ -1,11 +1,10 @@
 package by.ivankov.task3.service.impl;
 
 import by.ivankov.task3.entity.CustomArray;
-import by.ivankov.task3.reader.impl.ArrayFileReaderServiceImpl;
+import by.ivankov.task3.reader.impl.ArrayListReaderServiceImpl;
+import by.ivankov.task3.reader.impl.ArrayReaderServiceImpl;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
@@ -14,7 +13,7 @@ import static org.testng.Assert.*;
 public class StreamArrayServiceImplTest {
     @Test
     public void testStreamMinValue() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
         OptionalInt actual = service.streamMinValue(customArray);
@@ -24,7 +23,7 @@ public class StreamArrayServiceImplTest {
 
     @Test
     public void testStreamMaxValue() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
         OptionalInt actual = service.streamMaxValue(customArray);
@@ -34,7 +33,7 @@ public class StreamArrayServiceImplTest {
 
     @Test
     public void testStreamAverageValue() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
         OptionalDouble actual = service.streamAverageValue(customArray);
@@ -44,7 +43,7 @@ public class StreamArrayServiceImplTest {
 
     @Test
     public void testStreamSum() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
         OptionalInt actual = service.streamSum(customArray);
@@ -53,22 +52,22 @@ public class StreamArrayServiceImplTest {
     }
 
     @Test
-    public void testStreamSearchPositive() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+    public void testStreamSearchPosNeg() {
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
-        OptionalInt actual = service.streamSearchPositive(customArray);
-        OptionalInt expected = OptionalInt.of(5);
+        int[] actual = service.streamSearchPosNeg(customArray);
+        int[] expected = {5, 2};
         assertEquals(actual, expected);
     }
 
     @Test
-    public void testStreamSearchNegative() {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+    public void testStreamReplacement() {
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         StreamArrayServiceImpl service = new StreamArrayServiceImpl();
-        OptionalInt actual = service.streamSearchNegative(customArray);
-        OptionalInt expected = OptionalInt.of(2);
+        int[] actual = service.streamReplacement(customArray, 7);
+        int[] expected = {0, 1, 1, 0, 0, 1, 0};
         assertEquals(actual, expected);
     }
 }

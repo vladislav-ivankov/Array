@@ -2,10 +2,10 @@ package by.ivankov.task3.service.impl;
 
 import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.exception.CustomException;
-import by.ivankov.task3.reader.impl.ArrayFileReaderServiceImpl;
+import by.ivankov.task3.reader.impl.ArrayListReaderServiceImpl;
+import by.ivankov.task3.reader.impl.ArrayReaderServiceImpl;
 import org.testng.annotations.Test;
 
-import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
@@ -15,7 +15,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testAverageValue() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalDouble actual = service.averageValue(customArray);
@@ -25,7 +25,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testSearchSum() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalInt actual = service.sum(customArray);
@@ -35,7 +35,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testMaxValue() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalInt actual = service.maxValue(customArray);
@@ -45,7 +45,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testMinValue() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalInt actual = service.minValue(customArray);
@@ -55,7 +55,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testSearchPos() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalInt actual = service.searchPositive(customArray);
@@ -65,7 +65,7 @@ public class ArrayServiceImplTest {
 
     @Test
     public void testSearchNeg() throws CustomException {
-        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         ArrayServiceImpl service = new ArrayServiceImpl();
         OptionalInt actual = service.searchNegative(customArray);
@@ -73,14 +73,23 @@ public class ArrayServiceImplTest {
         assertEquals(actual, expected);
     }
 
-//    @Test
-//    public void testReplacementElement() throws CustomException {
-//        ArrayFileReaderServiceImpl readerService = new ArrayFileReaderServiceImpl();
-//        CustomArray customArray = readerService.arrayReader("data//correctString.txt");
-//        ArrayServiceImpl service = new ArrayServiceImpl();
-//        Optional<int[]> actual = service.replacement(customArray);
-//        Optional<int[]> expected = Optional.ofNullable(new int[]{0, 1, 1, 0, 0, 1, 0});
-//        assertEquals(actual, expected);
-//
-//    }
+    @Test
+    public void testSearchPosNeg() throws CustomException{
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
+        CustomArray customArray = readerService.arrayReader("data//correctString.txt");
+        ArrayServiceImpl service = new ArrayServiceImpl();
+        int[] actual = service.searchPosNeg(customArray);
+        int[] expected = {5, 2};
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testReplacementElement() throws CustomException {
+        ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
+        CustomArray customArray = readerService.arrayReader("data//correctString.txt");
+        ArrayServiceImpl service = new ArrayServiceImpl();
+        int[] actual = service.replacement(customArray, 7);
+        int[] expected = {0, 1, 1, 0, 0, 1, 0};
+        assertEquals(actual, expected);
+    }
 }
