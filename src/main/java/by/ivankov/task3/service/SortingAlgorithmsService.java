@@ -4,9 +4,9 @@ import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.exception.CustomException;
 
 public interface SortingAlgorithmsService {
-    int[] bubbleSort(CustomArray arr) throws CustomException;
+    void bubbleSort(CustomArray arr) throws CustomException;
 
-    int[] selectionSort(CustomArray arr) throws CustomException;
+    void selectionSort(CustomArray arr) throws CustomException;
 
-    int[] insertionSort(CustomArray arr) throws CustomException;
+    void insertionSort(CustomArray arr) throws CustomException;
 }

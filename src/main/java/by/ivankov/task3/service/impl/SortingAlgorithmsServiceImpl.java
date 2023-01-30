@@ -7,13 +7,11 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Optional;
-
 public class SortingAlgorithmsServiceImpl implements SortingAlgorithmsService {
     Logger logger = LogManager.getLogger();
 
     @Override
-    public int[] bubbleSort(CustomArray arr) throws CustomException {
+    public void bubbleSort(CustomArray arr) throws CustomException {
         if (arr == null) {
             throw new CustomException("The array cannot be empty");
         }
@@ -29,11 +27,10 @@ public class SortingAlgorithmsServiceImpl implements SortingAlgorithmsService {
         if (arr.getArray().length == 0) {
             logger.log(Level.INFO, "Array length = 0");
         }
-        return arr.getArray();
     }
 
     @Override
-    public int[] selectionSort(CustomArray arr) throws CustomException {
+    public void selectionSort(CustomArray arr) throws CustomException {
         if (arr == null) {
             throw new CustomException("The array cannot be empty");
         }
@@ -52,11 +49,10 @@ public class SortingAlgorithmsServiceImpl implements SortingAlgorithmsService {
         if (arr.getArray().length == 0) {
             logger.log(Level.INFO, "Array length = 0");
         }
-        return arr.getArray();
     }
 
     @Override
-    public int[] insertionSort(CustomArray arr) throws CustomException {
+    public void insertionSort(CustomArray arr) throws CustomException {
         if (arr == null) {
             throw new CustomException("The array cannot be empty");
         }
@@ -72,7 +68,5 @@ public class SortingAlgorithmsServiceImpl implements SortingAlgorithmsService {
         if (arr.getArray().length == 0) {
             logger.log(Level.INFO, "Array length = 0");
         }
-        return arr.getArray();
     }
-
 }

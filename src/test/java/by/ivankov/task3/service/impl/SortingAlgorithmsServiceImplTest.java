@@ -2,7 +2,6 @@ package by.ivankov.task3.service.impl;
 
 import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.exception.CustomException;
-import by.ivankov.task3.reader.impl.ArrayListReaderServiceImpl;
 import by.ivankov.task3.reader.impl.ArrayReaderServiceImpl;
 import org.testng.annotations.Test;
 
@@ -14,7 +13,8 @@ public class SortingAlgorithmsServiceImplTest {
         ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         SortingAlgorithmsServiceImpl service = new SortingAlgorithmsServiceImpl();
-        int[] actual = service.bubbleSort(customArray);
+        service.bubbleSort(customArray);
+        int[] actual = customArray.getArray();
         int[] expected = {-13, -5, 2, 5, 34, 36, 53};
         assertEquals(actual, expected);
     }
@@ -24,7 +24,8 @@ public class SortingAlgorithmsServiceImplTest {
         ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         SortingAlgorithmsServiceImpl service = new SortingAlgorithmsServiceImpl();
-        int[] actual = service.selectionSort(customArray);
+        service.selectionSort(customArray);
+        int[] actual = customArray.getArray();
         int[] expected = {-13, -5, 2, 5, 34, 36, 53};
         assertEquals(actual, expected);
     }
@@ -34,7 +35,8 @@ public class SortingAlgorithmsServiceImplTest {
         ArrayReaderServiceImpl readerService = new ArrayReaderServiceImpl();
         CustomArray customArray = readerService.arrayReader("data//correctString.txt");
         SortingAlgorithmsServiceImpl service = new SortingAlgorithmsServiceImpl();
-        int[] actual = service.insertionSort(customArray);
+        service.insertionSort(customArray);
+        int[] actual = customArray.getArray();
         int[] expected = {-13, -5, 2, 5, 34, 36, 53};
         assertEquals(actual, expected);
     }

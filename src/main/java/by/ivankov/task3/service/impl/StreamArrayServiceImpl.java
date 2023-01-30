@@ -9,7 +9,9 @@ public class StreamArrayServiceImpl implements StreamArrayService {
 
     @Override
     public int[] streamReplacement(CustomArray array, int condition) {
-        int[] result = Arrays.stream(array.getArray()).map(i -> i > condition ? 1 : 0).toArray();
+        int[] result = Arrays.stream(array.getArray())
+                .map(i -> i > condition ? 1 : 0)
+                .toArray();
         return result;
     }
 

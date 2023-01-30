@@ -2,11 +2,11 @@ package by.ivankov.task3.repository.spec;
 
 import by.ivankov.task3.entity.CustomArray;
 
-public class MoreSpecification implements Specification {
-    private int value;
+public class MoreSumSpecification implements Specification {
+    private int moreValue;
 
-    public MoreSpecification(int value) {
-        this.value = value;
+    public MoreSumSpecification(int moreValue) {
+        this.moreValue = moreValue;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class MoreSpecification implements Specification {
             for (int array : customArray.getArray()) {
                 sum += array;
             }
-            return sum > value;
+            return sum > moreValue;
     }
 }

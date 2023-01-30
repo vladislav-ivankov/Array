@@ -2,7 +2,6 @@ package by.ivankov.task3.service.impl;
 
 import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.exception.CustomException;
-import by.ivankov.task3.reader.impl.ArrayListReaderServiceImpl;
 import by.ivankov.task3.reader.impl.ArrayReaderServiceImpl;
 import org.testng.annotations.Test;
 
