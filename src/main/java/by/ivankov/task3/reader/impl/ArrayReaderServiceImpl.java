@@ -25,13 +25,14 @@ public class ArrayReaderServiceImpl implements ArrayReaderService {
     private static final String FILENAME = "data//defaultArray.txt";
     private static final String SEPARATOR = "\\s+";
 
-    public CustomArray arrayReader(String fileName) {
+    public int[] arrayReader(String fileName) {
         Path path = Path.of(fileName);
         if (!Files.exists(path)) {
             logger.log(Level.ERROR, "file" + fileName + " not exist");
             fileName = FILENAME;
         }
-        CustomArray customArray = new CustomArray();
+        int[] result;
+        //CustomArray customArray = new CustomArray();
         int[] arr = {};
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String strTemp;
@@ -52,8 +53,9 @@ public class ArrayReaderServiceImpl implements ArrayReaderService {
         } catch (IOException e) {
             logger.log(Level.ERROR, e);
         }
-        customArray.setArray(arr);
-        return customArray;
+        result = arr;
+        //customArray.setArray(arr);
+        return result;
     }
 
     @Override

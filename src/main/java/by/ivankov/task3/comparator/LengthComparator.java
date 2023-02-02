@@ -4,7 +4,7 @@ import by.ivankov.task3.entity.CustomArray;
 
 import java.util.Comparator;
 
-public class byLengthComparator implements Comparator<CustomArray> {
+public class LengthComparator implements Comparator<CustomArray> {
 
     @Override
     public int compare(CustomArray o1, CustomArray o2) {

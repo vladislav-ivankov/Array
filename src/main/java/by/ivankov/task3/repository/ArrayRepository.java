@@ -37,14 +37,19 @@ public class ArrayRepository {
         return arrays.add(customArray);
     }
 
-    public void update(int id, CustomArray customArray) {
-        for (int i = 0; i < arrays.size(); i++){
-            if (arrays.get(i).getArrayId() == id){
+    public boolean update(int id, CustomArray customArray) {
+        boolean result = false;
+        for (int i = 0; i < arrays.size(); i++) {
+            if (arrays.get(i).getArrayId() == id) {
                 arrays.remove(i);
                 arrays.add(i, customArray);
                 customArray.setArrayId(id);
+                result = true;
+            } else {
+                result = false;
             }
         }
+        return result;
     }
 
     public boolean delete(int id) {

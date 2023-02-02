@@ -1,6 +1,9 @@
 package by.ivankov.task3.entity;
 
 
+import by.ivankov.task3.exception.CustomException;
+import by.ivankov.task3.observer.ArrayStatisticsObserver;
+import by.ivankov.task3.observer.impl.ArrayStatisticsObserverImpl;
 import by.ivankov.task3.util.IdGenerator;
 
 import java.util.Arrays;
@@ -10,13 +13,23 @@ import java.util.StringJoiner;
 public class CustomArray {
     private int arrayId;
     private int[] array;
+    private ArrayStatisticsObserver observer;
 
     public CustomArray(){
         this.arrayId = IdGenerator.arrayIdGenerator();
+        observer = new ArrayStatisticsObserverImpl();
     }
     public CustomArray(int[] array) {
         this.arrayId = IdGenerator.arrayIdGenerator();
-        this.array = array;
+        setArray(array);
+        observer = new ArrayStatisticsObserverImpl();
+    }
+
+    public void removeObserver(){
+        observer = null;
+    }
+    public void addObserver(){
+        observer = new ArrayStatisticsObserverImpl();
     }
 
     public int getArrayId() {
@@ -28,11 +41,30 @@ public class CustomArray {
     }
 
     public void setArray(int[] array) {
-        this.array = array;
+        if(array != null && array.length > 0) {
+            this.array = array;
+        } else {
+            this.array = new int[]{0};
+        }
+        notifyObserver();
     }
 
     public int[] getArray() {
         return array;
+    }
+    public void setElement(int index, int value){
+        array[index] = value;
+        notifyObserver();
+    }
+
+    private void notifyObserver(){
+        if (observer != null){
+            try {
+                observer.changeArrayElement(this);
+            } catch (CustomException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override

@@ -3,10 +3,10 @@ package by.ivankov.task3.repository.spec;
 import by.ivankov.task3.entity.CustomArray;
 
 public class LessSumSpecification implements Specification {
-    private int lessValue;
+    private int lessSum;
 
-    public LessSumSpecification(int lessValue) {
-        this.lessValue = lessValue;
+    public LessSumSpecification(int lessSum) {
+        this.lessSum = lessSum;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class LessSumSpecification implements Specification {
         for (int array : customArray.getArray()) {
             sum += array;
         }
-        return sum < lessValue;
+        return sum < lessSum;
     }
 }

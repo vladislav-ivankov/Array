@@ -2,19 +2,21 @@ package by.ivankov.task3.repository.spec;
 
 import by.ivankov.task3.entity.CustomArray;
 
-public class EquallySumSpecification implements Specification{
-    private int equallySum;
+public class MoreAverageSpecification implements Specification {
+    private int moreAvg;
 
-    public EquallySumSpecification(int equallySum) {
-        this.equallySum = equallySum;
+    public MoreAverageSpecification(int moreAvg) {
+        this.moreAvg = moreAvg;
     }
 
     @Override
     public boolean specify(CustomArray customArray) {
         int sum = 0;
+        int avg;
         for (int array : customArray.getArray()) {
             sum += array;
         }
-        return sum == equallySum;
+        avg = sum / customArray.getArray().length;
+        return avg > moreAvg;
     }
 }

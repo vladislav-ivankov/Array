@@ -1,7 +1,7 @@
 package by.ivankov.task3.service.sort.impl;
 
 import by.ivankov.task3.comparator.FirstElementComparator;
-import by.ivankov.task3.comparator.byLengthComparator;
+import by.ivankov.task3.comparator.LengthComparator;
 import by.ivankov.task3.comparator.IdComparator;
 import by.ivankov.task3.entity.CustomArray;
 import by.ivankov.task3.service.sort.SortService;
@@ -17,7 +17,7 @@ public class SortServiceImpl implements SortService {
 
     @Override
     public List<CustomArray> sortByLength(List<CustomArray> arrays) {
-        Collections.sort(arrays, new byLengthComparator());
+        Collections.sort(arrays, new LengthComparator());
         return arrays;
     }
 

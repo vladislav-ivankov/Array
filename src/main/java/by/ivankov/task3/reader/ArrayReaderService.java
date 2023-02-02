@@ -6,6 +6,6 @@ import by.ivankov.task3.exception.CustomException;
 import java.util.List;
 
 public interface ArrayReaderService {
-    CustomArray arrayReader(String fileName);
+    int[] arrayReader(String fileName);
     List<CustomArray> arrayListReader(String fileName) throws CustomException;
 }
